@@ -34,16 +34,17 @@ public class Comprobarxml {
 
 		//per obtenir el node arrel
 		org.w3c.dom.Element nodeArrel = doc.getDocumentElement();
-		NodeList nodeList = doc.getChildNodes();
+		NodeList nodeList = doc.getDocumentElement().getChildNodes();
 		
 		for (int i = 0; i < nodeList.getLength(); i++) {
 			Node polla = nodeList.item(i);
-			Element caca = (Element) nodeList.item(i);
-			System.out.println(caca);
-			if(nodeList.item(i).equals()){
-//				Element p40000 = doc.createElement("alumne");
-//				p40000.setIdAttribute("id", true);
-				System.out.println("si");
+			if(polla.getNodeType() == Node.ELEMENT_NODE){
+				if(polla.hasChildNodes()){
+					if(polla.getAttributes().getNamedItem("id") != null){
+						Element caca = (Element) nodeList.item(i);
+						caca.setIdAttribute("id", true);
+					}
+				}
 			}
 		}
 		
