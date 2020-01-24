@@ -37,10 +37,10 @@ public class Comprobarxml {
 		NodeList nodeList = doc.getDocumentElement().getChildNodes();
 		
 		for (int i = 0; i < nodeList.getLength(); i++) {
-			Node polla = nodeList.item(i);
-			if(polla.getNodeType() == Node.ELEMENT_NODE){
-				if(polla.hasChildNodes()){
-					if(polla.getAttributes().getNamedItem("id") != null){
+			Node nodeproba = nodeList.item(i);
+			if(nodeproba.getNodeType() == Node.ELEMENT_NODE){
+				if(nodeproba.hasChildNodes()){
+					if(nodeproba.getAttributes().getNamedItem("id") != null){
 						Element caca = (Element) nodeList.item(i);
 						caca.setIdAttribute("id", true);
 					}
