@@ -69,7 +69,7 @@ public class Comprobarxml {
 		}else if(menu == 2){
 			System.out.println("Introdueix element que vols modificar: ");
 			String elementEliminar = teclado.next();
-			Element eliminat = doc.createElement(elementEliminar);
+			Element eliminat = doc.getElementById(elementEliminar);
 			
 			System.out.println("Introdueix el element el qual sustituira: ");
 			String element = teclado.next();
@@ -86,7 +86,7 @@ public class Comprobarxml {
 		}else if(menu == 3){
 			System.out.println("Introdueix element que vols eliminar: ");
 			String elementEliminar = teclado.next();
-			Element eliminat = doc.createElement(elementEliminar);
+			Element eliminat = doc.getElementById(elementEliminar);
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				org.w3c.dom.Node temporal = nodeList.item(i);
@@ -99,7 +99,7 @@ public class Comprobarxml {
 			
 			System.out.println("Introdueix element al que introduirli els nous atributs:");
 			String element2 = teclado.next();
-			Element p2 = doc.createElement(element2);
+			Element p2 = doc.getElementById(element2);
 			
 			System.out.println("Introdueix name: ");
 			String name = teclado.next();
@@ -119,7 +119,7 @@ public class Comprobarxml {
 		}else if(menu == 5){
 			System.out.println("Introdueix element al que introduirli els nous atributs:");
 			String element2 = teclado.next();
-			Element p2 = doc.createElement(element2);
+			Element p2 = doc.getElementById(element2);
 			
 			System.out.println("Introdueix name: ");
 			String name = teclado.next();
@@ -136,7 +136,7 @@ public class Comprobarxml {
 		}else if(menu == 6){
 			System.out.println("Introdueix element que vols modificar: ");
 			String elementEliminar = teclado.next();
-			Element eliminat = doc.createElement(elementEliminar);
+			Element eliminat = doc.getElementById(elementEliminar);
 			
 			System.out.println("Introdueix el element el qual sustituira: ");
 			String element = teclado.next();
