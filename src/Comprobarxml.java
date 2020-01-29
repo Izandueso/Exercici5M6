@@ -135,19 +135,18 @@ public class Comprobarxml {
 			}
 		}else if(menu == 6){
 			System.out.println("Introdueix element que vols modificar: ");
-			String elementEliminar = teclado.next();
-			Element eliminat = doc.getElementById(elementEliminar);
+			String elementModificar = teclado.next();
+			Element eliminat = doc.getElementById(elementModificar);
 			
 			System.out.println("Introdueix el element el qual sustituira: ");
-			String element = teclado.next();
-			Element p = doc.createElement(element);
-			System.out.println(p);
+			String nouValor = teclado.next();
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				org.w3c.dom.Node temporal = nodeList.item(i);
 				if(temporal.equals(eliminat)){
-					temporal.getAttributes().removeNamedItem(elementEliminar);
-					temporal.setNodeValue(element);
+					Element e = (Element) temporal;
+					e.setAttribute(elementModificar, nouValor);
+					
 				}
 			}
 		}else{
