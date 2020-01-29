@@ -111,47 +111,51 @@ public class Comprobarxml {
 				org.w3c.dom.Node temporal2 = nodeList.item(i);
 				if (temporal2.equals(p2)){
 					p2.setAttribute(name, value);
+					nodeArrel.appendChild(p2);
 				}
 			}
 			
 			
 		}else if(menu == 5){
+			System.out.println("Introdueix element al que introduirli els nous atributs:");
+			String element2 = teclado.next();
+			Element p2 = doc.createElement(element2);
 			
-		}else if(menu == 6){
+			System.out.println("Introdueix name: ");
+			String name = teclado.next();
 			
-		}else{
+			System.out.println("Introdueix value: ");
+			String value = teclado.next();
 			
-		}
-		
-	
-		
-		//Creem un node de text
-		System.out.println("Introdueix el element que vols crear: ");
-		String elementText = teclado.next();
-		Text text = doc.createTextNode(elementText);
-		System.out.println(text);
-		
-		
-		
-		
-		
-		for (int i = 0; i < nodeList.getLength(); i++) {
-			//imprimirDadesXml((org.w3c.dom.Node)nodeList.item(i));
-			
-		}	
-		
-		//Per obtenir els nodes fill d’un node useu el mètode getChildNodes()
-		//Per obtenir els atributs d’un node, useu el mètode getAttributes()
-		//Per obtenir el nom, el tipus i el valor d’un node, cerqueu els mètodes apropiats.
-		
-	}
-	
-	public static void imprimirDadesXml(org.w3c.dom.Node nodos){
-			System.out.println(nodos.getNodeName() + " " + nodos.getTextContent());
-			NodeList nodoListo = nodos.getChildNodes();
-			for (int j = 0; j < nodoListo.getLength(); j++){
-				imprimirDadesXml(nodoListo.item(j));	
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				org.w3c.dom.Node temporal2 = nodeList.item(i);
+				if (temporal2.equals(p2)){
+					temporal2.getAttributes().removeNamedItem(element2);
+				}
 			}
+		}else if(menu == 6){
+			System.out.println("Introdueix element que vols modificar: ");
+			String elementEliminar = teclado.next();
+			Element eliminat = doc.createElement(elementEliminar);
+			
+			System.out.println("Introdueix el element el qual sustituira: ");
+			String element = teclado.next();
+			Element p = doc.createElement(element);
+			System.out.println(p);
+			
+			for (int i = 0; i < nodeList.getLength(); i++) {
+				org.w3c.dom.Node temporal = nodeList.item(i);
+				if(temporal.equals(eliminat)){
+					temporal.getAttributes().removeNamedItem(elementEliminar);
+					temporal.setNodeValue(element);
+				}
+			}
+		}else{
+			System.out.println("error");
+		}
+
+		
 	}
+
 
 }
