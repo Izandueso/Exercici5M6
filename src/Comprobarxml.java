@@ -94,8 +94,8 @@ public class Comprobarxml {
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				org.w3c.dom.Node temporal = nodeList.item(i);
 				if(temporal.equals(eliminat)){
-					temporal.getParentNode().removeChild(eliminat);
-					temporal.getParentNode().setNodeValue(element);
+					temporal.removeChild(eliminat);
+					temporal.setNodeValue(element);
 				}
 			}
 		}else if(menu == 3){
