@@ -7,8 +7,14 @@ import org.w3c.dom.Element;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import org.w3c.dom.Node;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 
+import org.w3c.dom.Node;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.NamedNodeMap;
@@ -19,7 +25,7 @@ import org.xml.sax.SAXException;
 
 public class Comprobarxml {
 
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, TransformerException {
 
 		
 		Scanner teclado = new Scanner(System.in);		
@@ -36,17 +42,17 @@ public class Comprobarxml {
 		org.w3c.dom.Element nodeArrel = doc.getDocumentElement();
 		NodeList nodeList = doc.getDocumentElement().getChildNodes();
 		
-		for (int i = 0; i < nodeList.getLength(); i++) {
-			Node nodeproba = nodeList.item(i);
-			if(nodeproba.getNodeType() == Node.ELEMENT_NODE){
-				if(nodeproba.hasChildNodes()){
-					if(nodeproba.getAttributes().getNamedItem("id") != null){
-						Element caca = (Element) nodeList.item(i);
-						caca.setIdAttribute("id", true);
-					}
-				}
-			}
-		}
+//		for (int i = 0; i < nodeList.getLength(); i++) {
+//			Node nodeproba = nodeList.item(i);
+//			if(nodeproba.getNodeType() == Node.ELEMENT_NODE){
+//				if(nodeproba.hasChildNodes()){
+//					if(nodeproba.getAttributes().getNamedItem("id") != null){
+//						Element caca = (Element) nodeList.item(i);
+//						caca.setIdAttribute("id", true);
+//					}
+//				}
+//			}
+//		}
 		
 		//Menu
 		System.out.println("1- Crear | 2- Modificar | 3- Eliminat | 4- Afegir atr | 5- Eliminar atr | 6- Modificar atr: ");
@@ -54,16 +60,26 @@ public class Comprobarxml {
 		
 		if (menu == 1){
 			
-			//Busquem node
-			System.out.println("Introdueix una id: ");
-			String node = teclado.next();
-			Element c = doc.getElementById(node);
+			Element alumne = doc.createElement("alumne");
+			alumne.setAttribute("id", "4");
+			nodeArrel.appendChild(alumne);
 			
-			//Creem elements
-			System.out.println("Introdueix el element que vols crear: ");
-			String element = teclado.next();
-			Element d = doc.createElement(element);
-			c.appendChild(d);
+			Element nom = doc.createElement("nom");
+			nom.setTextContent("SaraxKevin");
+			alumne.appendChild(nom);
+			
+			Element cognom1 = doc.createElement("cognom1");
+			cognom1.setTextContent("Perez");
+			alumne.appendChild(cognom1);
+			
+			Element cognom2 = doc.createElement("cognom2");
+			cognom2.setTextContent("Garcia");
+			alumne.appendChild(cognom2);
+			
+			Element notaFinal = doc.createElement("notaFinal");
+			notaFinal.setTextContent("7");
+			alumne.appendChild(notaFinal);
+			
 			
 		}else if(menu == 2){
 			System.out.println("Introdueix element que vols modificar: ");
@@ -90,7 +106,7 @@ public class Comprobarxml {
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				org.w3c.dom.Node temporal = nodeList.item(i);
 				if(temporal.equals(eliminat)){
-					temporal.getParentNode().removeChild(eliminat);
+					temporal.removeChild(eliminat);
 				}
 			}
 			
@@ -152,9 +168,18 @@ public class Comprobarxml {
 			System.out.println("error");
 		}
 		
-//		while(scan.hasNextLine()){
-//			System.out.println(scan.nextLine());
-//		}
+		TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        Transformer transformer = transformerFactory.newTransformer();
+        DOMSource domSource = new DOMSource(doc);
+        StreamResult streamResult = new StreamResult(new File("alumnes.xml"));
+        
+        transformer.transform(domSource, streamResult);
+        System.out.println("Fin");
+
+		
+		while(scan.hasNextLine()){
+			System.out.println(scan.nextLine());
+		}
 
 		
 	}

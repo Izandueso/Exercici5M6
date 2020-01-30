@@ -1,4 +1,4 @@
-<alumnes>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><alumnes>
 	<alumne id="1">
 		<nom>Alex</nom>
 		<cognom1>Grange</cognom1>
@@ -19,4 +19,4 @@
 		<cognom2>Borras</cognom2>
 		<notaFinal>4</notaFinal>	  
   </alumne>
-</alumnes>
+<alumne id="4"><nom>SaraxKevin</nom><cognom1>Perez</cognom1><cognom2>Garcia</cognom2><notaFinal>7</notaFinal></alumne></alumnes>
