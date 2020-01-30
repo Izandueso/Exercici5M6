@@ -29,7 +29,7 @@ public class Comprobarxml {
 		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
 		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
 		Document doc = dBuilder.parse(file);
-		
+		Scanner scan = new Scanner(file);
 		
 
 		//per obtenir el node arrel
@@ -58,13 +58,12 @@ public class Comprobarxml {
 			System.out.println("Introdueix una id: ");
 			String node = teclado.next();
 			Element c = doc.getElementById(node);
-			System.out.println(c);
 			
 			//Creem elements
 			System.out.println("Introdueix el element que vols crear: ");
 			String element = teclado.next();
-			c = doc.createElement(element);
-			System.out.println(c);
+			Element d = doc.createElement(element);
+			c.appendChild(d);
 			
 		}else if(menu == 2){
 			System.out.println("Introdueix element que vols modificar: ");
@@ -152,6 +151,10 @@ public class Comprobarxml {
 		}else{
 			System.out.println("error");
 		}
+		
+//		while(scan.hasNextLine()){
+//			System.out.println(scan.nextLine());
+//		}
 
 		
 	}
