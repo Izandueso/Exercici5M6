@@ -53,7 +53,7 @@ public class Comprobarxml {
 					Element alumne = doc.createElement("row");
 					alumne.setAttribute("_adress", "https://analisi.transparenciacatalunya.cat/resource/yf2b-mjr6/row-efjc~t6wi.7y5k");
 					alumne.setAttribute("_id", "row-efjc~t6wi.7y5k");
-					alumne.setAttribute("_position", "_position");
+					alumne.setAttribute("_position", "3");
 					alumne.setAttribute("_uuid", "00000000-0000-0000-27CA-66ABEA857B6F");
 					e.appendChild(alumne);
 					
@@ -127,15 +127,9 @@ public class Comprobarxml {
 			}
 			
 		}else if(menu == 5){
-			System.out.println("Introdueix element al que introduirli els nous atributs:");
+			System.out.println("Introdueix element al que borrarli els atributs:");
 			String element = teclado.next();
 			Element p2 = doc.getElementById(element);
-			
-			System.out.println("Introdueix name: ");
-			String name = teclado.next();
-			
-			System.out.println("Introdueix value: ");
-			String value = teclado.next();
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node temporal = nodeList.item(i);
@@ -145,18 +139,21 @@ public class Comprobarxml {
 				}
 			}
 		}else if(menu == 6){
-			System.out.println("Introdueix element que vols modificar: ");
+			System.out.println("Introdueix element que vols modificar els atributs: ");
 			String elementModificar = teclado.next();
 			Element eliminat = doc.getElementById(elementModificar);
 			
-			System.out.println("Introdueix el element el qual sustituira: ");
+			System.out.println("Introdueix name: ");
+			String name = teclado.next();
+			
+			System.out.println("Introdueix el valor: ");
 			String nouValor = teclado.next();
 			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node temporal = nodeList.item(i);
 				Element e = (Element) temporal;
 				if(e.getNodeName().equals(elementModificar)){
-					e.setAttribute(elementModificar, nouValor);
+					e.setAttribute(name, nouValor);
 					
 				}
 			}
@@ -177,5 +174,4 @@ public class Comprobarxml {
 
 	}
 
-	
 }
