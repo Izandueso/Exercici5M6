@@ -46,6 +46,17 @@ public class Comprobarxml {
 		int menu = teclado.nextInt();
 		
 		if (menu == 1){
+			
+			System.out.println("Introdueix el nom del festiu: ");
+			teclado.nextLine();
+			String atr1 = teclado.nextLine();	
+			System.out.println("Introdueix l'any del festiu: ");
+			String atr2 = teclado.nextLine();	
+			System.out.println("Introdueix la data del festiu: ");
+			String atr3 = teclado.nextLine();	
+			System.out.println("Introdueix la localitzacio del festiu: ");
+			String atr4 = teclado.nextLine();
+			
 			for (int i = 0; i < nodeList.getLength(); i++) {
 				Node temporal = nodeList.item(i);
 				Element e = (Element) temporal;
@@ -58,19 +69,19 @@ public class Comprobarxml {
 					e.appendChild(alumne);
 					
 					Element nomFestiu = doc.createElement("nom_del_festiu");
-					nomFestiu.setTextContent("Fiesta del izan");
+					nomFestiu.setTextContent(atr1);
 					alumne.appendChild(nomFestiu);
 					
 					Element anyCalendari = doc.createElement("any_calendari");
-					anyCalendari.setTextContent("2020");
+					anyCalendari.setTextContent(atr2);
 					alumne.appendChild(anyCalendari);
 					
 					Element data = doc.createElement("data");
-					data.setTextContent("2020-01-0600:00:00");
+					data.setTextContent(atr3);
 					alumne.appendChild(data);
 					
 					Element localitzacio = doc.createElement("localitzacio");
-					localitzacio.setTextContent("Catalunya_España_Izan");
+					localitzacio.setTextContent(atr4);
 					alumne.appendChild(localitzacio);	
 				}
 			}	
