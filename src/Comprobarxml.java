@@ -42,18 +42,6 @@ public class Comprobarxml {
 		org.w3c.dom.Element nodeArrel = doc.getDocumentElement();
 		NodeList nodeList = doc.getDocumentElement().getChildNodes();
 		
-//		for (int i = 0; i < nodeList.getLength(); i++) {
-//			Node nodeproba = nodeList.item(i);
-//			if(nodeproba.getNodeType() == Node.ELEMENT_NODE){
-//				if(nodeproba.hasChildNodes()){
-//					if(nodeproba.getAttributes().getNamedItem("id") != null){
-//						Element caca = (Element) nodeList.item(i);
-//						caca.setIdAttribute("id", true);
-//					}
-//				}
-//			}
-//		}
-		
 		//Menu
 		System.out.println("1- Crear | 2- Modificar | 3- Eliminat | 4- Afegir atr | 5- Eliminar atr | 6- Modificar atr: ");
 		int menu = teclado.nextInt();
@@ -95,7 +83,7 @@ public class Comprobarxml {
 				org.w3c.dom.Node temporal = nodeList.item(i);
 				if(temporal.equals(eliminat)){
 					temporal.removeChild(eliminat);
-					temporal.setNodeValue(element);
+					temporal.appendChild(p);
 				}
 			}
 		}else if(menu == 3){
@@ -126,10 +114,8 @@ public class Comprobarxml {
 				org.w3c.dom.Node temporal2 = nodeList.item(i);
 				if (temporal2.equals(p2)){
 					p2.setAttribute(name, value);
-					nodeArrel.appendChild(p2);
 				}
 			}
-			
 			
 		}else if(menu == 5){
 			System.out.println("Introdueix element al que introduirli els nous atributs:");
@@ -174,14 +160,11 @@ public class Comprobarxml {
         StreamResult streamResult = new StreamResult(new File("alumnes.xml"));
         
         transformer.transform(domSource, streamResult);
-        System.out.println("Fin");
 
-		
 		while(scan.hasNextLine()){
 			System.out.println(scan.nextLine());
 		}
 
-		
 	}
 
 
