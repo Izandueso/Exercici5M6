@@ -50,26 +50,28 @@ public class Comprobarxml {
 				Node temporal = nodeList.item(i);
 				Element e = (Element) temporal;
 				if (e.getNodeName().equals("row")) {
-				//if(temporal.equals("row")){
-					Element alumne = doc.createElement("alumne");
-					alumne.setAttribute("id", "4");
+					Element alumne = doc.createElement("row");
+					alumne.setAttribute("_adress", "https://analisi.transparenciacatalunya.cat/resource/yf2b-mjr6/row-efjc~t6wi.7y5k");
+					alumne.setAttribute("_id", "row-efjc~t6wi.7y5k");
+					alumne.setAttribute("_position", "_position");
+					alumne.setAttribute("_uuid", "00000000-0000-0000-27CA-66ABEA857B6F");
 					e.appendChild(alumne);
 					
-					Element nom = doc.createElement("nom");
-					nom.setTextContent("SaraxKevin");
-					alumne.appendChild(nom);
+					Element nomFestiu = doc.createElement("nom_del_festiu");
+					nomFestiu.setTextContent("Fiesta del izan");
+					alumne.appendChild(nomFestiu);
 					
-					Element cognom1 = doc.createElement("cognom1");
-					cognom1.setTextContent("Perez");
-					alumne.appendChild(cognom1);
+					Element anyCalendari = doc.createElement("any_calendari");
+					anyCalendari.setTextContent("2020");
+					alumne.appendChild(anyCalendari);
 					
-					Element cognom2 = doc.createElement("cognom2");
-					cognom2.setTextContent("Garcia");
-					alumne.appendChild(cognom2);
+					Element data = doc.createElement("data");
+					data.setTextContent("2020-01-0600:00:00");
+					alumne.appendChild(data);
 					
-					Element notaFinal = doc.createElement("notaFinal");
-					notaFinal.setTextContent("7");
-					alumne.appendChild(notaFinal);	
+					Element localitzacio = doc.createElement("localitzacio");
+					localitzacio.setTextContent("Catalunya_España_Izan");
+					alumne.appendChild(localitzacio);	
 				}
 			}	
 			
@@ -175,5 +177,5 @@ public class Comprobarxml {
 
 	}
 
-
+	
 }
